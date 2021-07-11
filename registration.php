@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $email_error = "Email cannot be blank";
     }
     else{
-        $sql = "SELECT id FROM users WHERE email = ? ";
+        $sql = "SELECT `id` FROM `users` WHERE `email` = ? ";
         $sql2 = mysqli_prepare($con, $sql);
 
         if($sql2){
@@ -60,7 +60,7 @@ if(trim($_POST['password']) != trim($_POST['confirm_password'])){
 
 //No errors
 if(empty($email_error) && empty($password_error) && empty($confirm_password_error)){
-    $sql = "INSERT INTO users (email,password) VALUES (?,?)";
+    $sql = "INSERT INTO `users` (`email`,`password`) VALUES (?,?)";
     $sql2 = mysqli_prepare($con,$sql);
     if($sql2){
         mysqli_sql2_bind_par($sql2, "ss", $par_email, $par_password);
